@@ -94,7 +94,7 @@ Gradio arayüzünü başlatmak için:
 python src/app.py
 ```
 
-Tarayıcınızda otomatik olarak `http://127.0.0.1:7860` adresi açılacaktır.
+Tarayıcınızda otomatik olarak `http://127.0.0.1:7861` adresi açılacaktır.
 
 ### Uygulama Kullanımı
 
