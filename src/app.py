@@ -101,8 +101,13 @@ try:
     
 except Exception as e:
     print(f"⚠ Warning: Could not load class names. Error: {e}")
-    class_names = []
-    class_names_tr = []
+    print(f"  Using fallback class names.")
+    print(f"  To fix this, ensure Animals-10 dataset is in data/raw-img/ directory")
+    # Fallback to standard Animals-10 class names
+    class_names = ['cane', 'cavallo', 'elefante', 'farfalla', 'gallina', 
+                   'gatto', 'mucca', 'pecora', 'ragno', 'scoiattolo']
+    class_names_tr = ['Köpek', 'At', 'Fil', 'Kelebek', 'Tavuk', 
+                      'Kedi', 'İnek', 'Koyun', 'Örümcek', 'Sincap']
 
 
 def predict(image):
@@ -224,7 +229,7 @@ def predict(image):
 # - Soft shadows
 # - Pastel color palette
 # - High contrast for accessibility
-with gr.Blocks(theme=gr.themes.Soft(), title="Yapay Zeka Destekli Görüntü Sınıflandırıcı") as demo:
+with gr.Blocks(title="Yapay Zeka Destekli Görüntü Sınıflandırıcı") as demo:
     
     # Header Section
     # --------------
@@ -325,12 +330,13 @@ if __name__ == "__main__":
     print("\n" + "="*60)
     print("🚀 Launching Gradio Application...")
     print("="*60)
-    print("📍 Local URL: http://127.0.0.1:7860")
+    print("📍 Local URL: http://127.0.0.1:7861")
     print("⏹️  Press Ctrl+C to stop the server")
     print("="*60 + "\n")
     
     demo.launch(
         server_name="127.0.0.1",  # Localhost only (secure)
-        server_port=7860,          # Standard port
-        show_error=True            # Show detailed errors in UI (helpful for debugging)
+        server_port=7861,          # Alternative port (7860 might be busy)
+        show_error=True,           # Show detailed errors in UI (helpful for debugging)
+        theme=gr.themes.Soft()     # Modern theme (moved here for Gradio 6.0+)
     )
